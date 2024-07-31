@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+     app: demo-app
+  template:
+    metadata:
+      name: demo-app
+      labels:
+        app: demo-app
+        env: production
+    spec:
+      containers:
+        - name: demo-app
+          image: nginx
